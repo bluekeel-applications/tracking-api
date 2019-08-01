@@ -1,5 +1,9 @@
 service: tracking # NOTE: update this with your service name
 
+plugins:
+  - serverless-offline
+  - serverless-domain-manager
+  
 custom:
   allowedHeaders:
     - Accept
