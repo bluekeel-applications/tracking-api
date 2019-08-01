@@ -1,4 +1,4 @@
-service: tracking # NOTE: update this with your service name
+service: tracking-api # NOTE: update this with your service name
 
 plugins:
   - serverless-offline
