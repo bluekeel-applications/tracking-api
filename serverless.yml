@@ -1,0 +1,35 @@
+service: tracking # NOTE: update this with your service name
+
+custom:
+  allowedHeaders:
+    - Accept
+    - Content-Type
+    - Content-Length
+    - Authorization
+    - X-Amz-Date
+    - X-Api-Key
+    - X-Amz-Security-Token
+    - X-Amz-User-Agent
+    - user_pool_id
+    - app_client_id
+    - app_user_name
+    - app_user_id
+  customDomain:
+    domainName: tracking.bluekeel-api.com
+    basePath: 'v1'
+    stage: ${self:provider.stage}
+    certificateName: bluekeel-api.com
+    createRoute53Record: true
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  stage: prod
+  region: us-east-1
+  memorySize: 128
+  timeout: 5
+  endpointType: regional
+
+functions:
+  hello:
+    handler: handler.hello
