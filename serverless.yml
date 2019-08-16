@@ -36,4 +36,4 @@ provider:
 
 functions:
   hello:
-    handler: handler.hello
+    handler: api/handler.hello
