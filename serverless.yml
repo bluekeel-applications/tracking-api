@@ -37,21 +37,31 @@ provider:
 functions:
   hello:
     handler: api/handler.hello
+    description: GET /hello
     events:
       - http:
-        path: hello
-        method: get
-        cors: true
+          path: hello
+          method: get
+          cors: 
+            origin: '*'
+            headers: ${self:custom.allowedHeaders}
   graphql:
     handler: api/handler.graphql
+    description: GET /graphql
     events:
       - http:
           path: graphql
           method: post
-          cors: true
+          cors: 
+            origin: '*'
+            headers: ${self:custom.allowedHeaders}
   graphiql:
     handler: api/handler.graphiql
+    description: GET /graphiql
     events:
       - http:
           path: graphiql
           method: get
+          cors: 
+            origin: '*'
+            headers: ${self:custom.allowedHeaders}
