@@ -18,17 +18,22 @@ custom:
     - app_client_id
     - app_user_name
     - app_user_id
+  stage: ${opt:stage, self:provider.stage}
+  domains:
+    prod: tracking.bluekeel-api.com
+    staging: staging-tracking.bluekeel-api.com
+    dev: dev-tracking.bluekeel-api.com
   customDomain:
-    domainName: tracking.bluekeel-api.com
-    basePath: 'v1'
-    stage: ${self:provider.stage}
+    basePath: ""
+    domainName: ${self:custom.domains.${self:custom.stage}}
+    stage: "${self:custom.stage}"
     certificateName: bluekeel-api.com
     createRoute53Record: true
 
 provider:
   name: aws
   runtime: nodejs10.x
-  stage: prod
+  stage: dev
   region: us-east-1
   memorySize: 128
   timeout: 5
