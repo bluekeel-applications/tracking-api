@@ -37,3 +37,21 @@ provider:
 functions:
   hello:
     handler: api/handler.hello
+    events:
+      - http:
+        path: hello
+        method: get
+        cors: true
+  graphql:
+    handler: api/handler.graphql
+    events:
+      - http:
+          path: graphql
+          method: post
+          cors: true
+  graphiql:
+    handler: api/handler.graphiql
+    events:
+      - http:
+          path: graphiql
+          method: get
