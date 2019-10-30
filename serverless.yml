@@ -1,35 +1,8 @@
-service: tracking-api # NOTE: update this with your service name
+service: bluekeel-tracking-api # NOTE: update this with your service name
 
 plugins:
   - serverless-offline
-  - serverless-domain-manager
   
-custom:
-  allowedHeaders:
-    - Accept
-    - Content-Type
-    - Content-Length
-    - Authorization
-    - X-Amz-Date
-    - X-Api-Key
-    - X-Amz-Security-Token
-    - X-Amz-User-Agent
-    - user_pool_id
-    - app_client_id
-    - app_user_name
-    - app_user_id
-  stage: ${opt:stage, self:provider.stage}
-  domains:
-    prod: tracking.bluekeel-api.com
-    staging: staging-tracking.bluekeel-api.com
-    dev: dev-tracking.bluekeel-api.com
-  customDomain:
-    basePath: ""
-    domainName: ${self:custom.domains.${self:custom.stage}}
-    stage: "${self:custom.stage}"
-    certificateName: bluekeel-api.com
-    createRoute53Record: true
-
 provider:
   name: aws
   runtime: nodejs10.x
@@ -40,33 +13,8 @@ provider:
   endpointType: regional
 
 functions:
-  hello:
-    handler: api/handler.hello
-    description: GET /hello
-    events:
-      - http:
-          path: hello
-          method: get
-          cors: 
-            origin: '*'
-            headers: ${self:custom.allowedHeaders}
-  graphql:
-    handler: api/handler.graphql
-    description: GET /graphql
-    events:
-      - http:
-          path: graphql
-          method: post
-          cors: 
-            origin: '*'
-            headers: ${self:custom.allowedHeaders}
-  graphiql:
-    handler: api/handler.graphiql
-    description: GET /graphiql
-    events:
-      - http:
-          path: graphiql
-          method: get
-          cors: 
-            origin: '*'
-            headers: ${self:custom.allowedHeaders}
+  server:
+   handler: index.server
+   events:
+     - http: ANY /
+     - http: 'ANY {proxy+}'

@@ -2,7 +2,7 @@
   "name": "tracking",
   "version": "1.0.0",
   "description": "",
-  "main": "handler.js",
+  "main": "api/handler.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,14 +18,13 @@
   },
   "homepage": "https://github.com/bluekeel-applications/tracking-api#readme",
   "devDependencies": {
-    "serverless-domain-manager": "^3.2.6",
     "serverless-offline": "^5.10.1"
   },
   "dependencies": {
-    "apollo-server-lambda": "^2.8.2",
-    "graphql": "^14.4.2",
-    "graphql-tools": "^4.0.5",
-    "lodash": "^4.17.15",
-    "serverless": "^1.50.0"
+    "cors": "^2.8.5",
+    "epsagon": "^1.40.0",
+    "express": "^4.17.1",
+    "serverless": "^1.50.0",
+    "serverless-http": "^2.3.0"
   }
 }

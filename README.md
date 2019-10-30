@@ -1,6 +1,6 @@
 # BlueKeel - Tracking Layer - API
 
-Node lambdas using Serverless to run in API Gateway
+Node lambdas using Serverless to run Express API
 
 ## install serverless and log in
 
@@ -8,9 +8,9 @@ Node lambdas using Serverless to run in API Gateway
 -   `serverless login`
 -   login/sign up to serverless using Auth0
 -   make sure you get an invite to our organization on serverless and join it
--   run `yarn develop`
+-   run `yarn`
 
 ### Running Locally
 
 After cloning the repo and installing the dependencies (with `yarn` because we're not heathens)...
-
+run `sls offline`
